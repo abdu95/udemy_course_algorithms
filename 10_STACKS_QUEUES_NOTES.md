@@ -163,6 +163,116 @@ class Queue:
     
 
     
+## 12.42 Stack using List 
 
+my solution: 
 
+```python 
+class Stack:
+    def __init__(self):
+        self.stack_list = []
+        self.height = 1 
+```
 
+## 12.43 Push 
+
+my solution: 
+```python
+    def push(self, value):
+       self.stack_list.append(value) 
+```
+
+## 12.44 Pop
+
+my solution: 
+
+```python 
+    def pop(self):
+        if self.peek() is not None:
+            temp = self.peek() 
+            del self.stack_list[-1]
+            return temp
+        
+        return self.peek()
+```
+
+author's solution
+```python 
+    def pop(self):
+        if self.is_empty():
+            return None
+        else:
+            return self.stack_list.pop()
+```
+
+## 12.45 Reverse a string 
+
+    push the letters of word to a stack 
+    pop each letter (from the beginning)
+
+my solution:
+
+```python 
+
+def reverse_string(str_val):
+    str_stack = Stack()
+    for letter in str_val:
+        str_stack.push(letter)
+    
+    result_str = ""
+    while not str_stack.is_empty():
+        temp = str_stack.pop()
+        result_str += temp 
+    
+    return result_str
+    
+```
+
+## 12.61
+    Balanced parantheses:
+        open a paranthese and have a corresponding closing paranthese
+    Balanced: "()" "(())" "()()"
+    Not balanced: ")("
+
+    Iterate through the input string
+        - If we encounter opening paranthese, we push it to the stack 
+            
+        if stack is empty before reach to the end, paranthese are not balanced
+        - If we encounter closing paranthese, we pop from a stack (opening paranthese)
+    After the loop, is stack is empty? It means string had balanced parantheses
+
+my solution: 
+
+```python 
+def is_balanced_parentheses(str_pars):
+    par_stack = Stack()
+    for char in str_pars:
+        if char == '(':
+            par_stack.push(char)
+        elif char == ')':
+            if par_stack.is_empty():
+                return False
+            par_stack.pop()
+    
+    return par_stack.is_empty()
+```
+
+## 12. 62 Sort Stack
+    Sort the given stack of numbers 
+
+    3   1
+    1   2
+    4   3
+    2   4
+
+    Create second stack 
+    Create temp var = pop first item from a given stack
+    peek var: points to top item in second stack 
+
+    If the second stack is empty or peek number > temp, push to second stack 
+        if temp > peek, push temp to second stack 
+        if temp < peek, push peek to first stack
+    
+    if temp is empty, push items from second stack to first stack 
+
+    
