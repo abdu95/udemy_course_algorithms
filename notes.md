@@ -33,8 +33,6 @@ head should point to less_head (or greater_head)
 
 
 
-12 December 2025:     finished LinkedList 
-13 December 2025:     started Doubly LinkedList
 
 
 section   | coding | interview ex  

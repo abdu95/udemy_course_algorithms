@@ -1,4 +1,3 @@
-17 Dec 2025 - started Stacks 
 
 # Section 10 Stacks & Queue
 
@@ -265,14 +264,72 @@ def is_balanced_parentheses(str_pars):
     4   3
     2   4
 
+    Logic: create second stack. Push items from first stack to second stack so that second stack will have lowest numbers at the bottom.
+        Then we pop items from second stack and push to original stack.This way, lowest numbers will be at the top of the original stack 
+
     Create second stack 
     Create temp var = pop first item from a given stack
-    peek var: points to top item in second stack 
+    peek(): points to top item in second stack 
 
-    If the second stack is empty or peek number > temp, push to second stack 
+    If the second stack is empty or  temp < peek number
         if temp > peek, push temp to second stack 
         if temp < peek, push peek to first stack
-    
-    if temp is empty, push items from second stack to first stack 
+            push temp to second stack 
 
+
+```python
+    highest_to_lowest = Stack()
+    while not input_stack.is_empty():
+        temp = input_stack.pop()
+        
+        # we stop pushing peek to first stack when highest_to_lowest is empty or temp > peek
+        while not highest_to_lowest.is_empty() and highest_to_lowest.peek() > temp:
+            input_stack.push(highest_to_lowest.pop())
+        
+        highest_to_lowest.push(temp)
+
+    # pop items from second stack to first stack so that highest item from second stack is pushed to the bottom of the first stack   
+    while not highest_to_lowest.is_empty():
+        input_stack.push(highest_to_lowest.pop())
+
+```
     
+
+## 12.63 Queue using Stack 
+
+Your task is to implement the enqueue method that should add an element to the back of the queue.
+
+To achieve this, you can use the two stacks stack1 and stack2.
+
+Initially, all elements are stored in stack1 and stack2 is empty.
+
+To add an element to the back of the queue, you need to first transfer all elements from stack1 to stack2 using a loop that pops each element from stack1 and pushes it onto stack2.
+
+Once all elements have been transferred to stack2, push the new element onto stack1. Finally, transfer all elements from stack2 back to stack1 in the same way as before, so that the queue maintains its ordering.
+
+
+```python 
+def enqueue(self, value):
+    while self.stack1:
+        self.stack2.append(self.stack1.pop())
+    self.stack1.append(value)
+    while self.stack2:
+        self.stack1.append(self.stack2.pop())
+```
+
+The purpose of the dequeue method is to remove and return the first element in the queue. In this implementation, the first element is always at the bottom of stack1.
+
+The code first checks if the queue is empty using the is_empty method. If the queue is empty, the method returns None because there are no elements to remove.
+
+If the queue is not empty, the method removes and returns the last element in stack1 using the pop method. This is because the first element in the queue is always at the bottom of stack1, and pop removes elements from the end of a list.
+```python
+    def dequeue(self):
+        if self.is_empty():
+            return None 
+        else:
+            return self.stack1.pop()
+```
+
+
+
+
