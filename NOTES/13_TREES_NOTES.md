@@ -233,3 +233,58 @@ So basically you give me N, I give k (I tell you when to stop = how many steps a
 
 
 ## 13.67 Constructor 
+
+```python
+class Node:
+    def __init__(self, value):
+        self.value = value 
+        self.left = None 
+        self.right = None 
+
+```
+
+Each node have something pointing to it, except for root node.
+
+
+```
+     47
+   /    \
+  21      76
+ /  \    /  \
+18  27  52  82
+```
+
+```python
+class BinarySearchTree:
+    def __init__(self, value):
+        new_node = Node(value)
+        self.root = new_node
+```
+
+
+But you can also create tree where root is None - empty tree. 
+
+```python
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+```
+
+
+## 13.68 Insert 
+
+  The main idea is to compare new_node to temp (current node). If new_node < temp, go to the left side of the node. If new_node > temp, go to the right side of the node. 
+  Then after we go left or right, we check if there is a node on that side. If there is no node, we insert there. If there is a node, we do comparison again.  
+  Edge case I: if root == None 
+  Edge case II: if new_node == temp 
+
+  create new_node
+  if root == None then root = new_node 
+  temp = self.root 
+  while loop
+    if new_node == temp return False
+    if new_node < temp then left, else right 
+    if None insert new_node else move to next 
+
+
+ 
