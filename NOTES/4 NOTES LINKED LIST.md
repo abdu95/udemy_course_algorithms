@@ -464,6 +464,34 @@ I figured out almost all code using video except this part:
         return result
 ```
 
+
+## 37 Partition list 
+
+x = 5
+    3 - 8 - 5 - 10 - 2 - 1 
+    3 - 2 - 1 - 8 - 5 - 10
+
+Nodes < 5: left side, Nodes >= 5: right side 
+Keep initial order 
+
+create dummy nodes with value 0: less_head & greater_head 
+create variables to point to these nodes: less_tail, greater_tail
+
+iterate through list
+    if current node value < x, add current as next node to less_tail 
+        move less_tail to current
+    else, add current as next node to greater_tail
+        move greater_tail to current  
+
+connect less & greater
+    less_tail.next = greater_head.next 
+head should point to less_head (or greater_head)
+
+
+
+
+
+
 ## 38 Reverse between 
 
     prev => current => to_move 

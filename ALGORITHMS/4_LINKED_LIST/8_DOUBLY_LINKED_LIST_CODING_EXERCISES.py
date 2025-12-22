@@ -57,7 +57,31 @@ class DoublyLinkedList:
         self.length += 1 
         return True 
 
-    
+## 44 Pop first 
+
+# This is my initial solution: 
+
+    # def pop_first(self):
+    #     if self.head is None: 
+    #         return None 
+        
+    #     temp = self.head
+    #     if self.length == 1:
+    #         self.head = None 
+    #         self.tail = None 
+    #         return temp 
+            
+        
+    #     self.head = self.head.next    
+    #     self.head.prev = None 
+    #     temp.next = None
+
+    #     self.length -= 1
+    #     return temp 
+
+
+
+
     def pop_first(self):
         if self.length == 0: 
             return None 
@@ -87,12 +111,54 @@ class DoublyLinkedList:
         
         return temp 
     
+
+## 46 Set 
+
+# my initial solution 
+
+    # def set_value(self, index, value): 
+    #     if index < 0 or index >= self.length: 
+    #         return None 
+    #     temp = self.head 
+    #     for _ in range(index): 
+    #         temp = temp.next 
+    #     temp.value = value
+    #     return True 
+
     def set_value(self, index, value): 
         temp = self.get(index) 
         if temp: 
             temp.value = value 
             return True 
         return False 
+
+
+
+
+
+## 47 Insert 
+
+# my initial version, works only for inserting at the beginning
+
+    # def insert(self, index, value):
+    #     if index < 0 or index>= self.length:
+    #         return None
+    #     new_node = Node(value)
+    #     temp = self.get(index)
+
+    #     if index == 0:             
+    #         new_node.prev = temp.prev 
+    #         temp.prev = new_node
+    #         new_node.next = temp 
+    #         self.head = new_node 
+    #     if index == self.length:
+    #         new_node.next = temp.next 
+    #         temp.next = new_node
+    #         new_node.prev = temp 
+    #         self.tail = new_node
+ 
+
+
 
     def insert(self, index, value):
         if index < 0 or index > self.length:
@@ -114,6 +180,54 @@ class DoublyLinkedList:
         self.length += 1
         return True 
 
+
+    ## 48 Remove 
+
+# solution 1: using temp and prev 
+
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.length:
+            return self.pop()
+        
+        prev = self.get(index - 1)
+        temp = prev.next 
+
+        prev.next = temp.next 
+        temp.prev = None 
+        temp.next = None 
+        
+        self.length -= 1
+        return temp
+
+
+# solution 2: using before and after 
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length-1:
+            return self.pop()
+        
+        temp = self.get(index)
+        before = temp.prev
+        after = temp.next  
+        before.next = after 
+        after.prev = before
+
+        temp.prev = None 
+        temp.next = None 
+
+        self.length -= 1
+        return temp
+
+
+# solution 3: using only temp
+
     def remove(self, index):
         if index < 0 or index > self.length:
             return None
@@ -130,6 +244,8 @@ class DoublyLinkedList:
 
         self.length -= 1
         return temp
+
+
     
 
     def is_palindrome(self):

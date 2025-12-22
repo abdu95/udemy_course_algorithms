@@ -15,6 +15,22 @@ For each coding exercise, one python file that has code, logic, tests
 
 
 
+section   | coding | interview ex  
+S&Q       | 8      | 4
+Trees     | 7      | 1
+HasTables | 8 | 11
+Graph | 8 | 
+Heaps | 7 | 2
+Recursion | 3+7 | 2
+BST | 9 | 2
+Basic sorts | 8 | 3
+Merge sort | 6 | 1
+Quick sort | 5 | 
+Dynamic programming | 5 | 7
+
+
+
+
 # Section 2: Big O 
 ## 2.3 Intro
     way of comparing algorithms 

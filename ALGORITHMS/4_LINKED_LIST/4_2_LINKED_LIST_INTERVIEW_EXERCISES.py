@@ -298,7 +298,16 @@ class LinkedList:
         
         return self.head 
     
-## 39 
+## 39  Swap pairs 
+
+    # create dummy node
+    # prev = points to dummy node
+    # current = prev.next 
+    # after = current.next  
+    # swap current & after 
+
+    # prev = current 
+
     def swap_pairs(self):
         if self.length == 1:
             return self.head 
