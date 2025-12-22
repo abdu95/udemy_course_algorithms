@@ -8,9 +8,11 @@
     
     Binary tree is a tree in which each node has at most two children
 
+```
   4 
  /  \    
 3    23
+```
 
 ```json
 {
@@ -33,19 +35,43 @@
 - Complete tree: fill tree from left to right with no gaps 
 
 4: Parent, 3,23 Child nodes. They share same parent - siblings. Child nodes can be parent nodes too. 
+
+```
   4 
  /  \    
 3    23
+```
 
 Every node can have only one parent. 
 4 has two parents - not a tree. 
+
+```
 3   23
  \  /
   4
+```
 
 Leaf - nodes that does not have children (12  17  14 27)
+
+```
       4 
     /  \
    3    23
   / \   / \ 
 12  17  14 27
+```
+
+## 13.65 Binary Search Tree
+
+There is a node X. A new Y node will be added to right side of the node (Y > X) or the left side (Y < X)
+    
+- All nodes below root node (47) to the right are greater than root node
+- All nodes below root node (47) to the left are less than root node
+
+```
+     47
+   /    \
+  21      76
+ /  \    /  \
+18  27  52  82
+```
