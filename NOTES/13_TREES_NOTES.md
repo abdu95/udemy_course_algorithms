@@ -271,7 +271,7 @@ class BinarySearchTree:
 ```
 
 
-## 13.68 Insert 
+## 13.68 BST: Insert 
 
   The main idea is to compare new_node to temp (current node). If new_node < temp, go to the left side of the node. If new_node > temp, go to the right side of the node. 
   Then after we go left or right, we check if there is a node on that side. If there is no node, we insert there. If there is a node, we do comparison again.  
@@ -287,4 +287,70 @@ class BinarySearchTree:
     if None insert new_node else move to next 
 
 
- 
+
+
+
+Insert 
+
+Create New Node
+
+The code new_node = Node(value) creates a new node with the value you want to insert.
+
+Is the Tree Empty?
+
+The line if self.root is None: checks if the tree is empty.
+
+If it's empty, self.root = new_node makes the new node the root of the tree.
+
+Start at Root
+
+temp = self.root sets a temporary variable, temp, to the root so we can start there.
+
+Loop Until Spot Found
+
+while(True): makes a loop that will keep going until it finds the right spot for the new node.
+
+Duplicate Check
+
+if new_node.value == temp.value: checks for duplicate values.
+
+If a duplicate is found, it exits by returning False.
+
+Should We Go Left?
+
+if new_node.value < temp.value: checks if the new value is less than the current node's value.
+
+Insert to the Left
+
+if temp.left is None: checks if the left child spot is empty.
+
+If so, temp.left = new_node puts the new node there.
+
+Move Left and Continue
+
+temp = temp.left means, if the left spot isn't empty, move left and continue looking.
+
+Or Should We Go Right?
+
+If the new node's value is greater, the code moves to the else: part.
+
+Insert to the Right
+
+if temp.right is None: checks if the right child spot is empty.
+
+If so, temp.right = new_node puts the new node there.
+
+Move Right and Continue
+
+temp = temp.right means, if the right spot isn't empty, move right and continue looking.
+
+
+## 13.70 BST: Contains
+
+  if root == None return False
+  temp = self.root 
+  while temp is not None 
+    if < left 
+    elif > right 
+    else = return True
+  return False
