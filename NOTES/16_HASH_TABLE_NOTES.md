@@ -107,7 +107,7 @@ class HashTable:
 ## 16.75 Set
     INPUT: key, value
     OUTPUT: none 
-        passes key to the hash method to create an address. Also creates a list with key-value pair and adds it to an index
+        passes key to the hash method to create an address. Also creates a list with key-value pair and adds it to an address
 
 ```python 
     def set_item(self, key, value):
@@ -173,4 +173,59 @@ This is my solution. I think its more readable
                     keys_list.append(sublist[0])
         return keys_list
 ```
+
+## 16.78 Big O
+
+    Hash method: O(1)
+        For a given key of a certain number of letters, it will always be same number of operations to calculate the hash
+    
+    Insert by key - set_item: O(1)
+    Lookup by key - get_item: O(1)
+        can be O(N). But assumption keys will be sitributed for each address equally.  
+    Lookup by value: O(1)
+
+
+## 16.79 Interview question 
+
+    Determine if two given lists have item in common
+
+    1 naive approach (obvious): 
+        Nested for loop - O(N^2)
+        1st for loop: iterate through items of first list - X
+        2nd for loop: iterate through items of second list and check if any element equal to first element in first list
+        ~~
+        2nd for loop: iterate through items of second list and check if any element equal to second element in first list
+        ~~
+        2nd for loop: iterate through items of second list and check if any element equal to third element in first list
+        ++ 
+
+```python
+   def item_in_common(list1, list2):
+        for i in list1:
+            for j in list2:
+                if i == j:
+                    return True 
+        
+        return False
+```
+
+    O(N) > O(N^2)
+    2 approach - dictionary: O(N) + O(N) = O(2N) = O(N)
+        Loop throught the first list, add items to dictionary as a key, assign value True
+        Loop through the second list and compare each item to keys in dictionary. 
+
+```python
+    def item_in_common(list1, list2):
+        my_dict = {}
+        for i in list1:
+            my_dict[i] = True
+        
+        for j in list2:
+            if j in my_dict:
+                return True
+            
+        return False
+```
+
+
 
