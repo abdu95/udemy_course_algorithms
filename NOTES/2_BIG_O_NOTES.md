@@ -1,34 +1,3 @@
-Learning sequence:
-1. watch course video
-2. watch again and take minimal notes
-3. try to write a code for an exercise for 30min
-4. if no success, watch video solution 
-5. now write a code to this solution without watching a video
-6. If interview question: 
-    1. repeat steps 3-5
-    2. find a related Leetcode problem
-    3. try to write a code for a problem for 30min
-    4. if no success, watch Neetcode explanation video
-    5. now repeat his code independently 
-
-For each coding exercise, one python file that has code, logic, tests 
-
-
-
-section   | coding | interview ex  
-S&Q       | 8      | 4
-Trees     | 7      | 1
-HasTables | 8 | 11
-Graph | 8 | 
-Heaps | 7 | 2
-Recursion | 3+7 | 2
-BST | 9 | 2
-Basic sorts | 8 | 3
-Merge sort | 6 | 1
-Quick sort | 5 | 
-Dynamic programming | 5 | 7
-
-
 
 
 # Section 2: Big O 

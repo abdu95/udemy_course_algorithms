@@ -40,7 +40,7 @@ You follow a Celebrity. Celebrity does not follow you back.
 
 *Graph <= Tree <= LinkedList*
 
-LinkedList is a form of a tre, but they point to only one node.
+LinkedList is a form of a tree, but they point to only one node.
 Tree is a form of graph, but each node can point out two other nodes. 
 
 

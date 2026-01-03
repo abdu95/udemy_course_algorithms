@@ -30,9 +30,17 @@
 }
 ```
 
-- Full tree: points to 0 or 2 nodes
+- Full tree
+  points to 0 or 2 nodes
+  Every non leaf has two children and all the leaves are on the same level
+
 - Perfect tree: any level in the tree that has any nodes is completely filled all the way across
-- Complete tree: fill tree from left to right with no gaps 
+- Complete tree: 
+  
+  Every non leaf has two children except for the last row 
+
+  All levels are completely filled except possibly the last level,
+and the last level is filled from left to right with no gaps.
 
 - Parent (4) 
 - child nodes (3,23). 
