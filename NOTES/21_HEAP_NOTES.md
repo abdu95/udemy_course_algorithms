@@ -229,6 +229,25 @@ While loop stops in 2 conditions:
 
 
 ```
+      100
+    /     \
+   99      75
+  /  \    /  \ 
+58   72  61  18
+```
+
+We use 0 index, not 1-index
+
+```
+100 99  75  58  72  61  18
+0   1   2   3   4   5   6
+```
+
+
+
+
+```python
+
 ```
 
 
