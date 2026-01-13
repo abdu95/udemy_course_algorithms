@@ -218,6 +218,46 @@ Now we need to **bubble up new node to appropriate spot**.
 ```
 
 
+
+
+Insert new node - 75
+
+
+
+```
+      100
+    /    \
+   99    61
+  /  \     /
+58   72   75
+
+
+    100 99  61  58  72  75
+0   1   2   3   4   5    6
+```
+
+parent_index = current_index // 2
+  3 = 6 // 2 
+
+value at index 3 = 61. 61 < 75 so we swap positions 
+
+
+```
+      100
+    /    \
+   99    75
+  /  \     /
+58   72   61
+
+
+    100 99  75  58  72  61
+0   1   2   3   4   5    6
+```
+
+parent_index = 3 // 2 = 1 
+value at index 1 = 100. 100 > 75. we stop while loop
+
+
 Bubble up - moving new node to top with while loop
 
 While loop stops in 2 conditions:
@@ -247,13 +287,45 @@ We use 0 index, not 1-index
 
 
 ```python
+class MaxHeap:
+    def __init__(self):
+        self.heap = []
 
+    def _left_child(self, index):
+        return 2 * index + 1
+    
+    def _right_child(self, index):
+        return 2 * index + 1 + 1
+    
+    def _parent(self, index):
+        return (index -1) // 2
+    
+    def _swap(self, index1, index2):
+        self.heap[index1], self.heap[index2] = self.head[index2], self.heap[index1]
 ```
 
 
+## Heap: Insert code
+
+
+- Insert node to end of list 
+- current - points to current index 
+
+Bubble up - moving new node to top with while loop
+
+While loop stops in 2 conditions:
+- if new node reaches top of heap (current > 0)
+- if new node is less than top node 
+
+  1. compare node with its parent. If the node > parent = then swap current node with parent node
+  2. now change current to point to parent node
 
 
 ## Heap: Remove
+
+
+We only remove item at the top. 
+First, make sure the tree is complete. To make tree complete in one step is to bring last node to top. Then we sink it down. 
 
 Remove consists of 3 operations: 
 1. Remove node from top 
@@ -261,3 +333,88 @@ Remove consists of 3 operations:
 Temporarily bring last node to top so that remaining nodes stay connected 
 3. Sink down 
 Now **sink down the top node to appropriate spot** - below the node that is greater than this top node 
+
+*Sink down logic:*
+compare node to its children. if child is bigger - swap. We stop if child node is smaller than current node 
+
+Edge cases: 
+- if there are 2 or more items in heap 
+- if there is 1 item
+- if there is no item 
+
+
+Steps:
+- if heap is empty, return None 
+- if there is only one item - pop it and return 
+
+- max_value - save top item
+- pop last item and move it to the top 
+- sink down this top node 
+- return the max_value
+
+
+## Heap: Sink down 
+
+```
+      65
+     /  \
+   75   80
+  / \   /
+55  60  50
+```
+
+Remove puts last node on top. Sink down method puts that node to approapriate place. Its argument is the index of that node 
+
+Compare the node to its children. Determine which one of the children has highest value and do swap. 
+
+Steps:
+
+method receives index argument 
+
+- max_index = index 
+- enter while loop
+  - assign left_index and right_index 
+    1. if left_index > right_index
+    set max_index = left_index
+    2. if right_index > left_index
+    set max_index = right_index 
+    3. if max_index and index are pointing to different nodes 
+      - swap them
+      - now bring two pointers together: index = max_index 
+    else - return 
+
+
+*after we create left_index and right_index, we should check if there is a valid number in this index. Valid index is < len(heap)
+    
+
+
+## Heap: Priority Queues & Big O
+
+Highest value - highest priority 
+Heap suits well for situation where you always want to remove highest value from the queue because in heap we have highest value on top. 
+
+We could implement it using Linked List but it would be less efficient. We have to iterate through whole linked list to find max value = O(N) 
+
+We could implement it using List but in List items are randomly placed, not sorted. We have to iterate through whole list to find max value = O(N) 
+
+We could implement it using dictionary. Accessing an item is O(1). But for that we need to know beforehand what value we are looking for. We have to iterate through whole dictionary to find max value
+
+We could implement it using binary tree. max value is at the last item of tree. If its balanced tree, removing max item would be O(log N). Adding value is also O(log N). But binary trees are not always balanced. To add item to the end or removing item from the end of unbalanced tree, we have to traverse tree = O(N)
+
+But if we structure tree as heap, its always balanced because it will be complete. 
+
+```
+      95
+    /    \
+   75     80
+  / \    /  \
+55  60  65  50
+```
+
+If you **remove** 95 and move 50 to the top and **sink down** that 50, the farthest you have to sink it down is **height** of the tree. Height of balanced binary tree is O(log N). 
+
+When you **add** item, the furthest you have to **bubble up** is the **height** of the tree = O(log N)
+
+O(1) > O(log N) > O(N)
+
+
