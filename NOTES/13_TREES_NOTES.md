@@ -86,6 +86,27 @@ There is a node X. A new Y node will be added to right side of the node (if Y > 
 18  27  52  82
 ```
 
+My notes: 
+
+- Binary tree
+  A tree that can have at most two children 
+
+- Binary search tree
+  A type of binary tree with an ordering property: for every node, all values in its left subtree are smaller, and all values in its right subtree are larger
+
+Key Differences
+
+- Structure: Binary trees have no ordering requirement; BSTs must maintain sorted order.
+
+- Search efficiency: In a binary tree, you might need to check every node (O(n) time). In a balanced BST, search is O(log n) because you can eliminate half the remaining nodes at each step.
+
+- Use cases: Binary trees are good for representing hierarchies. BSTs are designed for efficient searching, insertion, and deletion of sorted data.
+
+- Insertion: Binary trees can insert anywhere. BSTs must insert in the correct position to maintain the ordering property.
+
+So every BST is a binary tree, but not every binary tree is a BST. The ordering constraint is what makes BSTs particularly useful for operations like searching and finding min/max values.
+
+
 
 ## 13.66 BST: Big O
 
