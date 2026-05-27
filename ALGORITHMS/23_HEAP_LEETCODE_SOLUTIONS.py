@@ -1,3 +1,6 @@
+from typing import List
+
+
 """
     01/05/2026
     
@@ -51,6 +54,8 @@
 #     return answer 
     
 
+
+
 def findRelativeRanks(score):
     # pair score with original index
     score_index = [(s, i) for i, s in enumerate(score)]
@@ -77,6 +82,37 @@ def findRelativeRanks(score):
 # result = findRelativeRanks([10,3,8,9,4])
 # result = findRelativeRanks([5,4,3,2,1])
 result = findRelativeRanks([1,2,3,4,5])
-print(result)
-    
-    
+# print(result)
+
+
+# 703. Kth Largest Element in a Stream 
+"""     
+    2, 4, 5, 8 
+    3 - 2, 3, 4, 5, 8 => 4
+    5 - 2, 3, 4, 5, 5, 8 => 5
+    10 - 2, 3, 4, 5, 5, 8, 10 => 5
+    9 -  2, 3, 4, 5, 5, 8, 9, 10 => 8
+    4 -  2, 3, 4, 4, 5, 5, 8, 8, 9, 10 => 8
+
+
+    4, 5, 8, 2
+"""
+
+class KthLargest:
+
+    def __init__(self, k: int, nums: List[int]):
+        self.rank = k
+        self.scores = nums
+
+    def add(self, val: int) -> int:
+        self.scores.append(val)
+        self.scores.sort(reverse = True)
+        return self.scores[self.rank-1]
+        
+
+kthobj = KthLargest(3, [4, 5, 8 ,2])
+print(kthobj.add(3))
+print(kthobj.add(5)) 
+print(kthobj.add(10)) 
+print(kthobj.add(9)) 
+print(kthobj.add(4)) 
