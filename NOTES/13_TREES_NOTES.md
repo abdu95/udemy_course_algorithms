@@ -94,6 +94,8 @@ My notes:
 - Binary search tree
   A type of binary tree with an ordering property: for every node, all values in its left subtree are smaller, and all values in its right subtree are larger
 
+  binary search tree cannot contain duplicates 
+  
 Key Differences
 
 - Structure: Binary trees have no ordering requirement; BSTs must maintain sorted order.
